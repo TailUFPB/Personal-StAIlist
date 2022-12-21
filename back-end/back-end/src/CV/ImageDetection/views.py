@@ -5,11 +5,11 @@ from rest_framework import permissions
 from ImageDetection.serializers import UserSerializer, GroupSerializer, ImageDetectionSerializer
 import torch
 from rest_framework.decorators import action
-    # queryset = Group.objects.all().order_by()
 from rest_framework.decorators import action
+
 # Create your views here.
 import os
-
+from django.http import JsonResponse
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -33,7 +33,10 @@ class ImageDetectionViewSet(viewsets.ModelViewSet):
 
     @action(methods=["GET", "POST"], url_path='evaluate', detail=False)
     def evaluate(self, request, model=model):
-        image = request.POST.get("image", None)
+        image = request.POST.get("image", "../../../../static/imagem.png" )
+        image = request.GET.get("image", "../../../../static/imagem.png" )
+        # image = request.GET.get("")
         model_evaluation = model(image)
         model_evaluation_dict = model_evaluation.pandas().xyxy[0].to_dict(orient="records")
-        return model_evaluation_dict 
+        return JsonResponse(model_evaluation_dict, safe=False)
+

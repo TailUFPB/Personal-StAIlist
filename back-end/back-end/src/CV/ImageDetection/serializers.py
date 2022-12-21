@@ -19,4 +19,4 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class ImageDetectionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ImageDetection
-        fields = ["created_at", "image", "model_evaluation", "model_evaluation_dict"] 
+        fields = ["created _at", "image", "model_evaluation", "model_evaluation_dict"] 

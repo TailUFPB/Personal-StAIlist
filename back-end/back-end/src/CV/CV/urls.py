@@ -23,7 +23,7 @@ from django.conf import settings
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
-router.register(r'teste', views.ImageDetectionViewSet, basename='detection')
+router.register(r'ImageDetection', views.ImageDetectionViewSet, basename='ImageDetection')
 
 urlpatterns = [
     path("admin/", admin.site.urls),
