@@ -1,0 +1,5 @@
+.venv
+back-end/back-end/bin/
+back-end/back-end/lib/
+back-end/back-end/share/
+/yolov5/
